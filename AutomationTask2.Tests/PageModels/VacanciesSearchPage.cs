@@ -40,7 +40,10 @@ namespace AutomationTask2.Tests.PageModels
             }
             return this;
         }
-
+        /// <summary>
+        /// Reliable clear form using javascript. The Clear_filters link is covered 
+        /// by drop-down menues and prevents the driver click to work.
+        /// </summary>
         public void ClearForm()
         {
             //make sure 'clear filter' is clicked
@@ -49,6 +52,10 @@ namespace AutomationTask2.Tests.PageModels
             .ExecuteScript(script);
         }
 
+        /// <summary>
+        /// Finds search results elements using data-vacancy attribute. 
+        /// It's more reliable than using class name.
+        /// </summary>
         public ControlList<Link<_>, _> SearchResults
             => FindAll<Link<_>>(new ControlDefinitionAttribute("a[@data-vacancy]"));
     }
